@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Yarn.Unity;
 using WhiteRabbit.Core;
 using WhiteRabbit.Hierarchy;
 namespace WhiteRabbit.FirstPrototype
@@ -40,12 +39,11 @@ public class CLevel3 : CLevelGeneric
 
     public void Start()
     {
-        ListCharacters = FindObjectsByType<CCharacter>(FindObjectsSortMode.None).Select(Char => Char.gameObject).ToList();
+      //  ListCharacters = FindObjectsByType<CCharacter>(FindObjectsSortMode.None).Select(Char => Char.gameObject).ToList();
 
           _inst = this;
     }
 
-    [YarnCommand("EndTerror")]
     public static void EventEndTerror()
     {      
         Door.SetRoom(5);
@@ -53,24 +51,10 @@ public class CLevel3 : CLevelGeneric
     }
 
   
-    public void DesactiveCharacter(int id)
-    {
-   
-       for(int i = 0; i <= ListCharacters.Count-1; i++)
-        {
-            if(ListCharacters[i].GetComponent<CCharacter>().GetIDCharacter() == id)
-            {
-                ListCharacters[i].SetActive(false); 
-            }
-            
-        }
-
-    }
 
 
     
 
-    [YarnCommand("NormalEnd")]
     public static void EventEndNormal()
     {
        Door.SetRoom(6);
